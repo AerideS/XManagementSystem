@@ -2,44 +2,30 @@ import java.util.Scanner;
 
 public class MenuManager {
 	public static void main(String[] args) {
+		int num = 0;
 		Scanner input = new Scanner(System.in);
-		int select;
-		
-		int scheduleId;		//Schedule id to distinguish each schedules
-		String name;		//Schedule name
-		int day;			//Schedule day
-int time;			//Schedule time
-		while(true) {
+
+		while(num != 6) {
 			System.out.println("1. Add Schedules");
 			System.out.println("2. Delete Schedules");
 			System.out.println("3. Edit Schedules");
 			System.out.println("4. View Schedules");
 			System.out.println("5. Show a menu");
 			System.out.println("6. Exit");
-			
-			select = input.nextInt();
-			
-			switch(select) {
+			System.out.println("Select one number between 1-6:");
+			num = input.nextInt();
+			switch(num) {
 			case 1:
-				System.out.println("input schedule id");
-				scheduleId = input.nextInt();
-				System.out.println("input name");
-				name = input.next();
-				System.out.println("input day");
-				day = input.nextInt();
-				System.out.println("input time");
-				time = input.nextInt();
+				System.out.print("Schedule order:");
+				int scheduleOrder = input.nextInt();
+				System.out.print("Schedule name:");
+				String schduleName = input.next();
 				break;
 			case 2:
 			case 3:
 			case 4:
-				System.out.println("What is the scheduleId?");
-				scheduleId = input.nextInt();
-				break;
-			case 5:
-				continue;
-			case 6:
-				return;
+				System.out.print("Schedule order:");
+				int scheduleOrder2 = input.nextInt();
 			}
 		}
 	}
