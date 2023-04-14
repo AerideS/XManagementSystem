@@ -2,27 +2,29 @@ import java.util.Scanner;
 
 public class MenuManager {
 	public static void main(String[] args) {
-		int num = 0;
-		Scanner input = new Scanner(System.in);
-
-		while(num != 6) {
-			System.out.println("1. Add Schedules");
-			System.out.println("2. Delete Schedules");
-			System.out.println("3. Edit Schedules");
+		
+		Scanner input = new Scanner(System.in);			//사용자로부터 입력을 받기 위한 Scanner 객체 생성
+		ScheduleManager scheduleManager = new ScheduleManager(input); // ScheduleManager 객체 생성
+		
+		int num = -1;
+		while(num != 5) {
+			System.out.println("1. Add Schedule");
+			System.out.println("2. Delete Schedule");
+			System.out.println("3. Edit Schedule");
 			System.out.println("4. View Schedules");
-			System.out.println("5. Show a menu");
-			System.out.println("6. Exit");
+			System.out.println(". Exit");
 			System.out.println("Select one number between 1-6:");
 			num = input.nextInt();
 			
-			if(num == 1)
-				addSchedule();
-			else if(num == 2)
-				deleteSchedule();
-			else if(num == 3)
-				editSchedule();
-			else if(num ==4)
-				viewSchedule();
+			// scheduleManager 객체의 메소드를 호출
+			if(num == 1)					// 1을 입력하였을 경우 addSchedule() 실행
+				scheduleManager.addSchedule();				
+			else if(num == 2)				// 2를 입력하였을 경우 deleteSchedule() 실행
+				scheduleManager.deleteSchedule();			
+			else if(num == 3)				// 3을 입력하였을 경우 editSchedule() 실행
+				scheduleManager.editSchedule();
+			else if(num ==4)				// 4를 입력하였을 경우 viewSchedule() 실행
+				scheduleManager.viewSchedules();
 			else 
 				continue;
 
