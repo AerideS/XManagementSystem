@@ -77,7 +77,7 @@ public class ScheduleManager {
 						schedule.scheduleName = input.next();
 					}
 					else if (num == 3) {
-						System.out.println("Email address");
+						System.out.println("Schedule subject");
 						schedule.scheduleSubject = input.next();
 					}
 					else {
