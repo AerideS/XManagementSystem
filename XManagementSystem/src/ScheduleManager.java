@@ -1,8 +1,13 @@
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
 import schedule.AssignmentSchedule;
 import schedule.Schedule;
+import schedule.ScheduleKind;
+import schedule.LectureSchedule;
+import schedule.ExamSchedule;
+import schedule.NoLecture;
 
 public class ScheduleManager {
 	ArrayList<Schedule> schedules = new ArrayList<Schedule>();			// collection 선언
@@ -17,24 +22,39 @@ public class ScheduleManager {
 		int kind = 0;
 		Schedule schedule;
 		while(kind != 1 && kind != 2) { 
-			System.out.print("1 for Assignment ");
-			System.out.print("2 for Lecture ");
-			System.out.print("Select num for Schedule Kind between 1 and 2: ");
+			System.out.print("1 for Assignment, ");
+			System.out.print("2 for Lecture, ");
+			System.out.print("3 for Eaxm, ");
+			System.out.print("4 for NoLecture, ");
+			System.out.print("Select num for Schedule Kind between 1 - 4: ");
 			kind = input.nextInt();
+			// 바뀐 부분
 			if(kind == 1) {
-				schedule = new AssignmentSchedule();			//Assignment 저장
+				schedule = new AssignmentSchedule(ScheduleKind.Assignment);			//Assignment 저장
 				schedule.getUserInput(input);
 				schedules.add(schedule);	// 리스트에 schedule 추가
 				break;
 			}
 			else if (kind == 2) {
-				schedule = new Schedule();			//Lecture 저장
+				schedule = new LectureSchedule(ScheduleKind.Lecture);		//Lecture 저장
+				schedule.getUserInput(input);
+				schedules.add(schedule);	// 리스트에 schedule 추가
+				break;
+			}
+			else if (kind == 3) {
+				schedule = new ExamSchedule(ScheduleKind.Exam);		//Exam 저장
+				schedule.getUserInput(input);
+				schedules.add(schedule);	// 리스트에 schedule 추가
+				break;
+			}
+			else if (kind == 4) {
+				schedule = new NoLecture(ScheduleKind.Nolecture);		//Exam 저장
 				schedule.getUserInput(input);
 				schedules.add(schedule);	// 리스트에 schedule 추가
 				break;
 			}
 			else {
-				System.out.print("Select num for Schedule Kind between 1 and 2: ");
+				System.out.print("Select num for Schedule Kind between 1 - 4: ");
 			}
 		}
 	}

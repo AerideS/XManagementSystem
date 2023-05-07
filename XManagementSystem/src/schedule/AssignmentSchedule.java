@@ -3,6 +3,13 @@ package schedule;
 import java.util.Scanner;
 
 public class AssignmentSchedule extends Schedule {
+
+	public AssignmentSchedule() {
+		super();
+	}
+	public AssignmentSchedule(ScheduleKind kind) {
+		super(kind);
+	}
 	public void getUserInput(Scanner input) {
 		System.out.print("Schedule order:");
 		int scheduleOrder = input.nextInt();
