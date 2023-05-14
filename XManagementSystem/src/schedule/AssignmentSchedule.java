@@ -2,7 +2,7 @@ package schedule;
 
 import java.util.Scanner;
 
-public class AssignmentSchedule extends Schedule {
+public class AssignmentSchedule extends Schedule implements ScheduleInput {
 
 	public AssignmentSchedule() {
 		super();
@@ -17,7 +17,7 @@ public class AssignmentSchedule extends Schedule {
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();
-		this.setDeadLine(scheduleName);
+		this.setScheduleName(scheduleName);
 
 		System.out.print("Subject:");
 		String scheduleSubject = input.next();
@@ -40,5 +40,27 @@ public class AssignmentSchedule extends Schedule {
 			else {
 				}
 		}
+	}
+	
+	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Assignment:
+			skind = "Assignment";
+			break;
+		case Lecture:
+			skind = "Lecture";
+			break;
+		case Exam:
+			skind = "Exam";
+			break;
+		case Nolecture:
+			skind = "Nolecture";
+			break;
+			default:
+				
+		}
+		System.out.println("kind:" + skind +" scheduleName:" + scheduleName + " scheduleOrder:" + scheduleOrder + " scheduleSubject:" +
+				scheduleSubject);
 	}
 }

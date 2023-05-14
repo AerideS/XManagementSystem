@@ -2,7 +2,7 @@ package schedule;
 
 import java.util.Scanner;
 
-public class NoLecture extends Schedule {
+public class NoLecture extends Schedule implements ScheduleInput{
 	private String noclassday;
 	
 	public String getNoclassday() {
@@ -27,7 +27,7 @@ public class NoLecture extends Schedule {
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();
-		this.setDeadLine(scheduleName);
+		this.setScheduleName(scheduleName);
 
 		System.out.print("Subject:");
 		String scheduleSubject = input.next();

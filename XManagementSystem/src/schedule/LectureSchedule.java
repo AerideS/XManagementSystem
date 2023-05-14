@@ -2,7 +2,7 @@ package schedule;
 
 import java.util.Scanner;
 // 추가된 부분
-public class LectureSchedule extends Schedule {
+public class LectureSchedule extends Schedule implements ScheduleInput{
 	
 	protected String professorName;
 	
@@ -30,7 +30,7 @@ public class LectureSchedule extends Schedule {
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();
-		this.setDeadLine(scheduleName);
+		this.setScheduleName(scheduleName);
 
 		System.out.print("Subject:");
 		String scheduleSubject = input.next();

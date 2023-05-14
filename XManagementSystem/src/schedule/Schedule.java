@@ -2,7 +2,7 @@ package schedule;
 
 import java.util.Scanner;
 
-public class Schedule {
+public abstract class Schedule {
 	protected String scheduleName;			// 스케줄 이름을 받기 위한 클래스의 필드
 	
 	protected int scheduleOrder;		 		// 스케줄 우선순위를 저장하기 위한 클래스의 필드
@@ -89,43 +89,5 @@ public class Schedule {
 	// 달라진 부분
 	// 정보 출력 메소드
 	
-	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Assignment:
-			skind = "Assignment";
-			break;
-		case Lecture:
-			skind = "Lecture";
-			break;
-		case Exam:
-			skind = "Exam";
-			break;
-		case Nolecture:
-			skind = "Nolecture";
-			break;
-			default:
-				
-		}
-		System.out.println("kind:" + skind +" scheduleName:" + scheduleName + " scheduleOrder:" + scheduleOrder + " scheduleSubject:" +
-				scheduleSubject + " deadLine:" + deadLine);
-	}
-	
-	public void getUserInput(Scanner input) {
-		System.out.print("Schedule order:");
-		int scheduleOrder = input.nextInt();
-		this.setScheduleOrder(scheduleOrder);
-		
-		System.out.print("Schedule name:");
-		String scheduleName = input.next();
-		this.setDeadLine(scheduleName);
-
-		System.out.print("Subject:");
-		String scheduleSubject = input.next();
-		this.setScheduleSubject(scheduleSubject);
-		
-		System.out.print("Dead Line:");
-		String deadLine = input.next();
-		this.setDeadLine(deadLine);
-	}
+	public abstract void printInfo();
 }

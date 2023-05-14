@@ -2,7 +2,7 @@ package schedule;
 
 import java.util.Scanner;
 
-public class ExamSchedule extends Schedule {
+public class ExamSchedule extends Schedule implements ScheduleInput{
 	
 	protected String dday;
 	
@@ -27,7 +27,7 @@ public class ExamSchedule extends Schedule {
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();
-		this.setDeadLine(scheduleName);
+		this.setScheduleName(scheduleName);
 
 		System.out.print("Subject:");
 		String scheduleSubject = input.next();

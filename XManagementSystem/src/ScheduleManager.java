@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 import schedule.AssignmentSchedule;
 import schedule.Schedule;
+import schedule.ScheduleInput;
 import schedule.ScheduleKind;
 import schedule.LectureSchedule;
 import schedule.ExamSchedule;
 import schedule.NoLecture;
 
 public class ScheduleManager {
-	ArrayList<Schedule> schedules = new ArrayList<Schedule>();			// collection 선언
+	ArrayList<ScheduleInput> schedules = new ArrayList<ScheduleInput>();			// collection 선언
 	Scanner input;			// ScheduleManager의 Scanner 필드
 	
 	ScheduleManager(Scanner input) {	// 이 코드로 Scanner 한 번만 만들어도 됨
@@ -20,7 +21,7 @@ public class ScheduleManager {
 	// 객체 필드를 통해 값을 저장
 	public void addSchedule() {
 		int kind = 0;
-		Schedule schedule;
+		ScheduleInput scheduleInput;
 		while(kind != 1 && kind != 2) { 
 			System.out.print("1 for Assignment, ");
 			System.out.print("2 for Lecture, ");
@@ -30,27 +31,27 @@ public class ScheduleManager {
 			kind = input.nextInt();
 			// 바뀐 부분
 			if(kind == 1) {
-				schedule = new AssignmentSchedule(ScheduleKind.Assignment);			//Assignment 저장
-				schedule.getUserInput(input);
-				schedules.add(schedule);	// 리스트에 schedule 추가
+				scheduleInput = new AssignmentSchedule(ScheduleKind.Assignment);			//Assignment 저장
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);	// 리스트에 schedule 추가
 				break;
 			}
 			else if (kind == 2) {
-				schedule = new LectureSchedule(ScheduleKind.Lecture);		//Lecture 저장
-				schedule.getUserInput(input);
-				schedules.add(schedule);	// 리스트에 schedule 추가
+				scheduleInput = new LectureSchedule(ScheduleKind.Lecture);		//Lecture 저장
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);	// 리스트에 schedule 추가
 				break;
 			}
 			else if (kind == 3) {
-				schedule = new ExamSchedule(ScheduleKind.Exam);		//Exam 저장
-				schedule.getUserInput(input);
-				schedules.add(schedule);	// 리스트에 schedule 추가
+				scheduleInput = new ExamSchedule(ScheduleKind.Exam);		//Exam 저장
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);	// 리스트에 schedule 추가
 				break;
 			}
 			else if (kind == 4) {
-				schedule = new NoLecture(ScheduleKind.Nolecture);		//Exam 저장
-				schedule.getUserInput(input);
-				schedules.add(schedule);	// 리스트에 schedule 추가
+				scheduleInput = new NoLecture(ScheduleKind.Nolecture);		//Exam 저장
+				scheduleInput.getUserInput(input);
+				schedules.add(scheduleInput);	// 리스트에 schedule 추가
 				break;
 			}
 			else {
@@ -87,8 +88,8 @@ public class ScheduleManager {
 		System.out.print("ScheduleOrder: ");
 		int scheduleOrder = input.nextInt();
 		for(int i = 0; i < schedules.size(); i++) {
-			Schedule schedule = schedules.get(i);			// 계속 schedules.get(i)를 하면 불편하므로
-			if(schedule.getScheduleOrder() == scheduleOrder) {
+			ScheduleInput scheduleInput = schedules.get(i);			// 계속 schedules.get(i)를 하면 불편하므로
+			if(scheduleInput.getScheduleOrder() == scheduleOrder) {
 				int num = -1;
 				while(num != 5) {
 					System.out.println("** Student Info Edit Menu **");
@@ -102,18 +103,18 @@ public class ScheduleManager {
 					if (num == 1) {
 						System.out.print("Schedule Order:");
 						int order = input.nextInt();
-						schedule.setScheduleOrder(order);	//setter 활용
+						scheduleInput.setScheduleOrder(order);	//setter 활용
 						
 					}
 					else if (num == 2) {
 						System.out.println("Schedule name");
 						String name = input.next();
-						schedule.setScheduleName(name); 	//setter 활용
+						scheduleInput.setScheduleName(name); 	//setter 활용
 					}
 					else if (num == 3) {
 						System.out.println("Schedule subject");
 						String subject = input.next();
-						schedule.setScheduleSubject(subject);	//setter 활용
+						scheduleInput.setScheduleSubject(subject);	//setter 활용
 					}
 					else {
 						continue;
