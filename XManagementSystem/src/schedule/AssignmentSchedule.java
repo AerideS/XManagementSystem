@@ -2,6 +2,8 @@ package schedule;
 
 import java.util.Scanner;
 
+import exception.ScheduleOrderException;
+
 public class AssignmentSchedule extends Schedule implements ScheduleInput {
 
 	public AssignmentSchedule() {
@@ -11,10 +13,17 @@ public class AssignmentSchedule extends Schedule implements ScheduleInput {
 		super(kind);
 	}
 	public void getUserInput(Scanner input) {
-		System.out.print("Schedule order:");
-		int scheduleOrder = input.nextInt();
-		this.setScheduleOrder(scheduleOrder);
-		
+		// 예외처리
+		int scheduleOrder = -1;
+		while(scheduleOrder < 0) {
+			System.out.print("Schedule order:");
+			scheduleOrder = input.nextInt();
+			try {
+				this.setScheduleOrder(scheduleOrder);
+			} catch(ScheduleOrderException e) {
+				System.out.println("Incorrect schedule order number. put the number over -1");
+			}
+		}
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();
 		this.setScheduleName(scheduleName);

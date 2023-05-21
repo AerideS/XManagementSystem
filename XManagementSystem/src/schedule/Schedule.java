@@ -2,6 +2,8 @@ package schedule;
 
 import java.util.Scanner;
 
+import exception.ScheduleOrderException;
+
 public abstract class Schedule {
 	protected String scheduleName;			// 스케줄 이름을 받기 위한 클래스의 필드
 	
@@ -33,7 +35,10 @@ public abstract class Schedule {
 		return scheduleOrder;
 	}
 
-	public void setScheduleOrder(int scheduleOrder) {
+	public void setScheduleOrder(int scheduleOrder) throws ScheduleOrderException {
+		if(scheduleOrder < 0) {
+			throw new ScheduleOrderException();
+		}
 		this.scheduleOrder = scheduleOrder;
 	}
 

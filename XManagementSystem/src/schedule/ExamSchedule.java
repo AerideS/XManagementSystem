@@ -2,6 +2,8 @@ package schedule;
 
 import java.util.Scanner;
 
+import exception.ScheduleOrderException;
+
 public class ExamSchedule extends Schedule implements ScheduleInput{
 	
 	protected String dday;
@@ -21,9 +23,17 @@ public class ExamSchedule extends Schedule implements ScheduleInput{
 	
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Schedule order:");
-		int scheduleOrder = input.nextInt();
-		this.setScheduleOrder(scheduleOrder);
+		// 예외처리
+		int scheduleOrder = -1;
+		while(scheduleOrder < 0) {
+			System.out.print("Schedule order:");
+			scheduleOrder = input.nextInt();
+			try {
+				this.setScheduleOrder(scheduleOrder);
+			} catch(ScheduleOrderException e) {
+				System.out.println("Incorrect schedule order number. put the number over -1");
+			}
+		}
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();

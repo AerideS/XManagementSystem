@@ -1,6 +1,8 @@
 package schedule;
 
 import java.util.Scanner;
+
+import exception.ScheduleOrderException;
 // 추가된 부분
 public class LectureSchedule extends Schedule implements ScheduleInput{
 	
@@ -24,9 +26,17 @@ public class LectureSchedule extends Schedule implements ScheduleInput{
 
 
 	public void getUserInput(Scanner input) {
-		System.out.print("Schedule order:");
-		int scheduleOrder = input.nextInt();
-		this.setScheduleOrder(scheduleOrder);
+		// 예외처리
+		int scheduleOrder = -1;
+		while(scheduleOrder < 0) {
+			System.out.print("Schedule order:");
+			scheduleOrder = input.nextInt();
+			try {
+				this.setScheduleOrder(scheduleOrder);
+			} catch(ScheduleOrderException e) {
+				System.out.println("Incorrect schedule order number. put the number over -1");
+			}
+		}
 		
 		System.out.print("Schedule name:");
 		String scheduleName = input.next();

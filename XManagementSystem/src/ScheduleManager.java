@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import exception.ScheduleOrderException;
 import schedule.AssignmentSchedule;
 import schedule.Schedule;
 import schedule.ScheduleInput;
@@ -100,10 +101,19 @@ public class ScheduleManager {
 					System.out.println(" 5. Exit");
 					System.out.println("Select one number between 1 - 6: ");
 					num = input.nextInt();
+				
 					if (num == 1) {
-						System.out.print("Schedule Order:");
-						int order = input.nextInt();
-						scheduleInput.setScheduleOrder(order);	//setter 활용
+						// 예외처리
+						int order = -1;
+						while(scheduleOrder < 0) {
+							System.out.print("Schedule order:");
+							order = input.nextInt();
+							try {
+								scheduleInput.setScheduleOrder(order);
+							} catch(ScheduleOrderException e) {
+								System.out.println("Incorrect schedule order number. put the number over -1");
+							}		
+						}
 						
 					}
 					else if (num == 2) {
