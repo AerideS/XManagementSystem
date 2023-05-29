@@ -1,19 +1,23 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Scanner;
 
 import exception.ScheduleOrderException;
 import schedule.AssignmentSchedule;
-import schedule.Schedule;
 import schedule.ScheduleInput;
 import schedule.ScheduleKind;
 import schedule.LectureSchedule;
 import schedule.ExamSchedule;
 import schedule.NoLecture;
 
-public class ScheduleManager {
+public class ScheduleManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6578351335933347577L;
 	ArrayList<ScheduleInput> schedules = new ArrayList<ScheduleInput>();			// collection 선언
-	Scanner input;			// ScheduleManager의 Scanner 필드
+	transient Scanner input;			// ScheduleManager의 Scanner 필드
 	
 	ScheduleManager(Scanner input) {	// 이 코드로 Scanner 한 번만 만들어도 됨
 		this.input = input;

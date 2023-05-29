@@ -1,10 +1,16 @@
 package schedule;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.ScheduleOrderException;
 
-public abstract class Schedule {
+public abstract class Schedule implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7745374976808439315L;
+
 	protected String scheduleName;			// 스케줄 이름을 받기 위한 클래스의 필드
 	
 	protected int scheduleOrder;		 		// 스케줄 우선순위를 저장하기 위한 클래스의 필드
