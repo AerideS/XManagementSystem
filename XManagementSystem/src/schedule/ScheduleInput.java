@@ -12,4 +12,7 @@ public interface ScheduleInput {
 	public void getUserInput(Scanner input);
 	public int getScheduleOrder();
 	public void setScheduleSubject(String scheduleSubject);
+	public String getScheduleName();
+	public String getScheduleSubject();
+	public ScheduleKind getKind();
 }

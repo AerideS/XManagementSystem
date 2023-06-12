@@ -1,15 +1,10 @@
+package schedule;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Scanner;
 
 import exception.ScheduleOrderException;
-import schedule.AssignmentSchedule;
-import schedule.ScheduleInput;
-import schedule.ScheduleKind;
-import schedule.LectureSchedule;
-import schedule.ExamSchedule;
-import schedule.NoLecture;
 
 public class ScheduleManager implements Serializable {
 	/**
@@ -19,7 +14,7 @@ public class ScheduleManager implements Serializable {
 	ArrayList<ScheduleInput> schedules = new ArrayList<ScheduleInput>();			// collection 선언
 	transient Scanner input;			// ScheduleManager의 Scanner 필드
 	
-	ScheduleManager(Scanner input) {	// 이 코드로 Scanner 한 번만 만들어도 됨
+	public ScheduleManager(Scanner input) {	// 이 코드로 Scanner 한 번만 만들어도 됨
 		this.input = input;
 	}
 	
@@ -147,5 +142,13 @@ public class ScheduleManager implements Serializable {
 		for(int i = 0; i < schedules.size(); i++) {
 			schedules.get(i).printInfo();
 		}
+	}
+	
+	public int size() {
+		return schedules.size();
+	}
+	
+	public ScheduleInput get(int index) {
+		return (ScheduleInput) schedules.get(index);
 	}
 }

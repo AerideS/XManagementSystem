@@ -1,17 +1,40 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ScheduleViewer extends JFrame {
-	public ScheduleViewer() {
+import schedule.ScheduleInput;
+import schedule.ScheduleManager;
+
+public class ScheduleViewer extends JPanel {
+	WindowFrame frame;
+	
+	ScheduleManager scheduleManager;
+	public ScheduleViewer(WindowFrame frame, ScheduleManager scheduleManager) {
+		this.frame = frame;
+		this.scheduleManager = scheduleManager;
+		
+		System.out.println("***" + scheduleManager.size() + "***");
+		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Order");
 		model.addColumn("NAME");
 		model.addColumn("Subject");
 		model.addColumn("Kind");
+		for (int i = 0; i < scheduleManager.size(); i++) {
+			Vector row = new Vector();
+			ScheduleInput si= scheduleManager.get(i);
+			row.add(si.getScheduleOrder());
+			row.add(si.getScheduleName());
+			row.add(si.getScheduleSubject());
+			row.add(si.getKind());
+			model.addRow(row);
+		}
 		
 		String column[] = {"Order", "NAME", "Subject", "Kind"};
 		
@@ -19,10 +42,5 @@ public class ScheduleViewer extends JFrame {
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		
-		this.setSize(300, 300);;
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		this.setVisible(true);;
 	}
 }

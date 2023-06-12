@@ -6,7 +6,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
+import schedule.ScheduleManager;
 
 public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");
@@ -18,6 +20,7 @@ public class MenuManager {
 			scheduleManager = new ScheduleManager(input); // ScheduleManager 객체 생성
 		}
 		
+		WindowFrame frame = new WindowFrame(scheduleManager);
 		int num = -1;
 		while(num != 5) {
 			System.out.println("1. Add Schedule");
